@@ -6,7 +6,7 @@ const initialState = {
   errors: null,
 };
 
-export const articlesSlice = createSlice({
+const articlesSlice = createSlice({
   name: "sources",
   initialState: initialState,
   reducers: {
@@ -22,5 +22,5 @@ export const articlesSlice = createSlice({
   },
 });
 
-const { fetchArticles } = articlesSlice.actions;
+export const { fetchArticles } = articlesSlice.actions;
 export default articlesSlice.reducer;

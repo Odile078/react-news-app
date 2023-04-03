@@ -6,7 +6,7 @@ const initialState = {
   errors: null,
 };
 
-export const trendingArticlesSlice = createSlice({
+const trendingArticlesSlice = createSlice({
   name: "sources",
   initialState: initialState,
   reducers: {
@@ -22,5 +22,5 @@ export const trendingArticlesSlice = createSlice({
   },
 });
 
-const { fetchTrendingArticles } = trendingArticlesSlice.actions;
+export const { fetchTrendingArticles } = trendingArticlesSlice.actions;
 export default trendingArticlesSlice.reducer;
