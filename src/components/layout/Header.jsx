@@ -4,7 +4,7 @@ const Header = () => {
     e.preventDefault();
   };
   return (
-    <header className="flex items-center justify-between max-w-5xl px-5 py-4  bg-slate-50 lg:mx-auto">
+    <header className="flex items-center justify-between max-w-6xl px-5 py-4 bg-slate-50 lg:mx-auto">
       <h1 className="text-5xl logo-font">News</h1>
       <form
         className="flex p-1 border rounded-xl border-slate-100"

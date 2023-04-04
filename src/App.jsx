@@ -7,7 +7,7 @@ function App() {
   return (
     <>
       <Header />
-      <main className="max-w-5xl px-5 pb-10 space-y-10 lg:mx-auto">
+      <main className="max-w-6xl px-5 pb-10 space-y-10 lg:mx-auto">
         <Categories />
         <TrendingArticles />
         <Sources />
