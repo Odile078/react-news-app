@@ -1,6 +1,6 @@
 import { useDispatch, useSelector } from "react-redux";
 import Button from "../ui/Button";
-import { setSelectedCategory } from "../../features/categories";
+import { setSelectedCategory } from "../../features/categoriesSlice";
 
 const Categories = () => {
   const { categories, selectedCategory } = useSelector(
