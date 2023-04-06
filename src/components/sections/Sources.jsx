@@ -14,7 +14,7 @@ const Sources = () => {
   }, [selectedCategory]);
   return (
     <div className="space-y-4">
-      <h1 className="text-4xl font-bold text-slate-700">
+      <h1 className="text-2xl font-bold text-slate-700">
         Available Publishers
       </h1>
       <div className="flex flex-wrap gap-4 ">
@@ -25,7 +25,7 @@ const Sources = () => {
         ) : sources.length !== 0 ? (
           sources.map((article, index) => (
             <Button
-              className="w-40 h-16 bg-slate-400"
+              className="w-40 h-16 bg-slate-400 "
               key={index}
               active={index === 0 ? true : false}
             >
