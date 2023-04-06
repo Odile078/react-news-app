@@ -57,7 +57,7 @@ const articlesSlice = createSlice({
         state.isLoading = false;
         state.articles = action.payload.articles
           ?.slice(0, 10)
-          ?.map((article, index) => (article = { ...article, id: nanoid() }));
+          ?.map((article) => (article = { ...article, id: nanoid() }));
         state.errors = null;
       })
       .addCase(fetchArticles.rejected, (state, action) => {

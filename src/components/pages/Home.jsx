@@ -1,11 +1,7 @@
 import TrendingArticles from "../sections/TrendingArticles";
 
 const Home = () => {
-  return (
-    <div>
-      <TrendingArticles />
-    </div>
-  );
+  return <TrendingArticles />;
 };
 
 export default Home;

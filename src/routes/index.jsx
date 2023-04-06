@@ -2,8 +2,8 @@ import { useRoutes } from "react-router-dom";
 import PageLayout from "../components/layout/PageLayout";
 import Home from "../components/pages/Home";
 import ArticleDetails from "../components/sections/ArticleDetails";
-import GeneralArticles from "../components/sections/GeneralArticles";
 import NotFound from "../components/pages/NotFound";
+import SourceArticles from "../components/pages/SourceArticles";
 
 const index = () => {
   let routes = useRoutes([
@@ -26,7 +26,7 @@ const index = () => {
           name: "Source articles",
           path: "/:sourceName",
           exact: true,
-          element: <GeneralArticles />,
+          element: <SourceArticles />,
         },
         {
           name: "Source Article contents",
