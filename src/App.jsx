@@ -2,7 +2,7 @@ import Header from "./components/layout/Header";
 import Categories from "./components/sections/Categories";
 import Sources from "./components/sections/Sources";
 import TrendingArticles from "./components/sections/TrendingArticles";
-
+import Footer from "./components/layout/Footer";
 function App() {
   return (
     <>
@@ -12,6 +12,7 @@ function App() {
         <TrendingArticles />
         <Sources />
       </main>
+      <Footer />
     </>
   );
 }

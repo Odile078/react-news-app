@@ -6,10 +6,15 @@ const Article = ({ article, firstArticle = false }) => {
       }`}
     >
       <img
-        src={article.urlToImage}
+        src={
+          article.urlToImage ??
+          "https://images.pexels.com/photos/518543/pexels-photo-518543.jpeg?auto=compress&cs=tinysrgb&w=600"
+        }
         alt=""
-        className={`object-cover object-center w-full flex-1 ${
-          firstArticle ? "h-32 lg:h-96 " : "h-32"
+        className={`object-cover object-center w-full flex-1  ${
+          firstArticle
+            ? "h-40 lg:h-96  max-h-40 lg:max-h-full"
+            : "h-40 max-h-40"
         }`}
       />
       <div className="p-4 space-y-4 justify-self-end">
