@@ -1,6 +1,18 @@
+import { useNavigate, useParams } from "react-router-dom";
 import Button from "../ui/Button";
+import { useDispatch } from "react-redux";
+import { setSelectedArticle } from "../../features/articlesSlice";
 
 const Article = ({ article, firstArticle = false }) => {
+  const { sourceName } = useParams();
+  const navigate = useNavigate();
+  const dispatch = useDispatch();
+  const handleSelectArticle = (selectedArticle) => {
+    dispatch(setSelectedArticle(article));
+    sourceName
+      ? navigate(`/sources/:${sourceName}/${selectedArticle}`)
+      : navigate(`/news/${selectedArticle}`);
+  };
   return (
     <div
       className={`flex w-full bg-slate-50 border border-slate-50 hover:bg-slate-100 hover:shadow-md cursor-pointer flex-col justify-between ${
@@ -24,7 +36,7 @@ const Article = ({ article, firstArticle = false }) => {
           {article.title?.substring(0, 30)}
         </h5>
         <p className="text-slate-400">{article.description}</p>
-        <Button>More</Button>
+        <Button action={() => handleSelectArticle(article)}>More</Button>
       </div>
     </div>
   );

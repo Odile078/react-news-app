@@ -6,6 +6,7 @@ import { nanoid } from "nanoid";
 const initialState = {
   isLoading: false,
   articles: [],
+  selectedArticle: {},
   errors: null,
 };
 export const fetchArticles = createAsyncThunk(
@@ -59,6 +60,11 @@ export const searchArticlesBySourceAndKeyword = (
 const articlesSlice = createSlice({
   name: "articles",
   initialState: initialState,
+  reducers: {
+    setSelectedArticle: (state, action) => {
+      state.selectedArticle = action.payload;
+    },
+  },
   extraReducers: (builder) => {
     builder
       .addCase(fetchArticles.pending, (state) => {
@@ -91,5 +97,5 @@ const articlesSlice = createSlice({
       });
   },
 });
-
+export const { setSelectedArticle } = articlesSlice.actions;
 export default articlesSlice.reducer;
