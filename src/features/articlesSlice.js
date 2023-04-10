@@ -44,7 +44,15 @@ export const searchArticlesBySource = (selectedSource) => {
   const searchBySourceUrl = `https://newsapi.org/v2/everything?language=en&source=${selectedSource}&apiKey=${API_KEY}`;
   searchArticles(searchBySourceUrl);
 };
-
+export const searchArticlesBySourceAndKeyword = (
+  selectedSource,
+  searchText
+) => {
+  // const selectedSource = getState().sources.selectedSource;
+  const keyword = searchText;
+  const searchBySourceUrl = `https://newsapi.org/v2/everything?language=en&source=${selectedSource}&apiKey=${API_KEY}`;
+  searchArticles(searchBySourceUrl);
+};
 const articlesSlice = createSlice({
   name: "articles",
   initialState: initialState,

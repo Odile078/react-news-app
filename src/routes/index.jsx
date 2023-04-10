@@ -12,26 +12,23 @@ const index = () => {
       element: <PageLayout />,
       children: [
         {
+          name: "Home page",
           index: true,
           element: <Home />,
-          exact: true,
         },
         {
           name: "Article contents",
           path: "/news/:articleId",
-          exact: true,
           element: <ArticleDetails />,
         },
         {
           name: "Source articles",
-          path: "/:sourceName",
-          exact: true,
+          path: "/sources/:sourceName",
           element: <SourceArticles />,
         },
         {
           name: "Source Article contents",
-          path: "/:sourceName/:articleId",
-          exact: true,
+          path: "/sources/:sourceName/:articleId",
           element: <ArticleDetails />,
         },
       ],

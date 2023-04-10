@@ -6,11 +6,11 @@ import Header from "./Header";
 
 const PageLayout = () => {
   return (
-    <>
+    <div className="flex flex-col min-h-screen">
       <Header />
-      <main className="max-w-6xl px-5 pb-10 space-y-10 lg:mx-auto">
+      <main className="flex-1 max-w-6xl px-5 pb-10 space-y-10 lg:mx-auto">
         <Categories />
-        <div className="grid grid-cols-1 md:grid-cols-4 gap-12">
+        <div className="grid grid-cols-1 gap-12 md:grid-cols-4">
           <div className="md:col-span-3">
             <Outlet />
           </div>
@@ -20,7 +20,7 @@ const PageLayout = () => {
         </div>
       </main>
       <Footer />
-    </>
+    </div>
   );
 };
 
