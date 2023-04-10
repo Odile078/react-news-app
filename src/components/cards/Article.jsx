@@ -19,7 +19,7 @@ const Article = ({ article, firstArticle = false }) => {
   };
   return (
     <div
-      className={`flex w-full bg-slate-50 border border-slate-50 hover:bg-slate-100 hover:shadow-md cursor-pointer flex-col justify-between ${
+      className={`flex w-full bg-slate-50 border border-slate-50 hover:bg-slate-50 hover:shadow-md cursor-pointer flex-col justify-between ${
         firstArticle ? "lg:row-span-2 lg:col-span-2 " : ""
       }`}
     >
@@ -29,7 +29,7 @@ const Article = ({ article, firstArticle = false }) => {
           "https://images.pexels.com/photos/518543/pexels-photo-518543.jpeg?auto=compress&cs=tinysrgb&w=600"
         }
         alt=""
-        className={`object-cover object-center w-full flex-1  ${
+        className={`object-cover object-center w-full flex-1 border-0 border-transparent ${
           firstArticle
             ? "h-40 lg:h-96  max-h-40 lg:max-h-full"
             : "h-40 max-h-40"

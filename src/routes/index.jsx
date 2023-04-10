@@ -1,9 +1,9 @@
 import { useRoutes } from "react-router-dom";
 import PageLayout from "../components/layout/PageLayout";
-import Home from "../components/pages/Home";
+import Home from "../pages/Home";
 import ArticleDetails from "../components/sections/ArticleDetails";
-import NotFound from "../components/pages/NotFound";
-import SourceArticles from "../components/pages/SourceArticles";
+import NotFound from "../pages/NotFound";
+import SourceArticles from "../pages/SourceArticles";
 
 const index = () => {
   let routes = useRoutes([
@@ -18,17 +18,17 @@ const index = () => {
         },
         {
           name: "Article contents",
-          path: "/news/:articleId",
+          path: "news/:articleId",
           element: <ArticleDetails />,
         },
         {
           name: "Source articles",
-          path: "/sources/:sourceName",
+          path: "sources/:sourceName",
           element: <SourceArticles />,
         },
         {
           name: "Source Article contents",
-          path: "/sources/:sourceName/:articleId",
+          path: "sources/:sourceName/:articleId",
           element: <ArticleDetails />,
         },
       ],

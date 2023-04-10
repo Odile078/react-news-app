@@ -1,4 +1,4 @@
-import TrendingArticles from "../sections/TrendingArticles";
+import TrendingArticles from "../components/sections/TrendingArticles";
 
 const Home = () => {
   return <TrendingArticles />;

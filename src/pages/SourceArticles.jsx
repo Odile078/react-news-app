@@ -1,4 +1,4 @@
-import GeneralArticles from "../sections/GeneralArticles";
+import GeneralArticles from "../components/sections/GeneralArticles";
 import { useParams } from "react-router-dom";
 
 const SourceArticles = () => {
