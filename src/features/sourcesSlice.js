@@ -9,8 +9,10 @@ import { nanoid } from "nanoid";
 const initialState = {
   isLoading: false,
   sources: [],
+  selectedSource: null,
   errors: null,
 };
+
 // const API_KEY = process.env.REACT_APP_API_KEY;
 export const fetchSources = createAsyncThunk(
   "sources/fetchSources",
@@ -29,6 +31,11 @@ export const fetchSources = createAsyncThunk(
 const sourcesSlice = createSlice({
   name: "sources",
   initialState: initialState,
+  reducers: {
+    setSelectedSource: (state, action) => {
+      state.selectedSource = action.payload;
+    },
+  },
   extraReducers: (builder) => {
     builder
       .addCase(fetchSources.pending, (state) => {
@@ -52,5 +59,5 @@ const sourcesSlice = createSlice({
   },
 });
 
-// export const { fetchSources } = sourcesSlice.actions;
+export const { setSelectedSource } = sourcesSlice.actions;
 export default sourcesSlice.reducer;

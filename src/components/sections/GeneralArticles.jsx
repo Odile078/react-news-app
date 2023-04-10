@@ -2,12 +2,13 @@ import { useEffect } from "react";
 import { useDispatch, useSelector } from "react-redux";
 import { fetchArticles } from "../../features/articlesSlice";
 import ArticlesList from "../cards/ArticlesList";
+import { articlesList } from "../../data/articleSample";
 
 const GeneralArticles = () => {
   const { articles, isLoading } = useSelector((state) => state.articles);
-  const { categories, selectedCategory } = useSelector(
-    (state) => state.categories
-  );
+  const { selectedCategory } = useSelector((state) => state.categories);
+  const newArticles =
+    !isLoading && articles?.length !== 0 ? articles : articlesList;
   const dispatch = useDispatch();
   useEffect(() => {
     dispatch(fetchArticles());
@@ -15,7 +16,7 @@ const GeneralArticles = () => {
   return (
     <div className="space-y-4">
       <h1 className="text-4xl font-bold text-slate-700">Trending </h1>
-      <ArticlesList articles={articles} isLoading={isLoading} />
+      <ArticlesList articles={newArticles} isLoading={isLoading} />
     </div>
   );
 };
