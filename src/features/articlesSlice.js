@@ -16,6 +16,9 @@ export const fetchArticles = createAsyncThunk(
       const response = await axios.get(
         `https://newsapi.org/v2/everything?language=en&category=${category}&apiKey=${API_KEY}`
       );
+      // const response = await axios.get(
+      //   `https://newsapi.org/v2/top-headlines?language=en&category=${category}&apiKey=${API_KEY}`
+      // );
       return response.data;
     } catch (err) {
       return rejectWithValue(err.message);

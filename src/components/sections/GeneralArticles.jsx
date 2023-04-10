@@ -15,7 +15,6 @@ const GeneralArticles = () => {
   }, [selectedCategory]);
   return (
     <div className="space-y-4">
-      <h1 className="text-4xl font-bold text-slate-700">Trending </h1>
       <ArticlesList articles={newArticles} isLoading={isLoading} />
     </div>
   );
