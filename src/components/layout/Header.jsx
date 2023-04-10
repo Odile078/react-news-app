@@ -1,11 +1,14 @@
 import { IoSearchOutline } from "react-icons/io5";
+import { Link } from "react-router-dom";
 const Header = () => {
   const handleSubmitForm = (e) => {
     e.preventDefault();
   };
   return (
     <header className="flex flex-wrap items-center justify-between w-full max-w-6xl gap-4 px-5 py-4 bg-slate-100 lg:mx-auto">
-      <h1 className="text-5xl logo-font">News</h1>
+      <Link to="/">
+        <h1 className="text-5xl logo-font">News</h1>
+      </Link>
       <form
         className="flex p-1 px-2 bg-white border rounded-lh border-slate-100"
         onSubmit={handleSubmitForm}
