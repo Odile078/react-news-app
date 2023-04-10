@@ -10,8 +10,12 @@ const Article = ({ article, firstArticle = false }) => {
   const handleSelectArticle = (selectedArticle) => {
     dispatch(setSelectedArticle(article));
     sourceName
-      ? navigate(`/sources/:${sourceName}/${selectedArticle}`)
-      : navigate(`/news/${selectedArticle}`);
+      ? navigate(
+          `/sources/:${sourceName}/${
+            selectedArticle.id || selectedArticle.title
+          }`
+        )
+      : navigate(`/news/${selectedArticle.id || selectedArticle.title}`);
   };
   return (
     <div
