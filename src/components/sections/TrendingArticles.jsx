@@ -9,9 +9,7 @@ const TrendingArticles = () => {
   const { trendingArticles, isLoading } = useSelector(
     (state) => state.trendingArticles
   );
-  const { categories, selectedCategory } = useSelector(
-    (state) => state.categories
-  );
+  const { selectedCategory } = useSelector((state) => state.categories);
   const dispatch = useDispatch();
   useEffect(() => {
     dispatch(fetchTrendingArticles());

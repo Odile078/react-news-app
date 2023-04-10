@@ -1,3 +1,5 @@
+import Button from "../ui/Button";
+
 const Article = ({ article, firstArticle = false }) => {
   return (
     <div
@@ -22,6 +24,7 @@ const Article = ({ article, firstArticle = false }) => {
           {article.title?.substring(0, 30)}
         </h5>
         <p className="text-slate-400">{article.description}</p>
+        <Button>More</Button>
       </div>
     </div>
   );

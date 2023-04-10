@@ -19,9 +19,11 @@ const Sources = () => {
       </h1>
       <div className="flex flex-wrap gap-4 ">
         {isLoading ? (
-          [1, 2, 3, 4, 5, 6, 7].map((item, index) => (
-            <ParagraphSkeleton key={index} />
-          ))
+          <div className="flex flex-wrap gap-2">
+            {[1, 2, 3, 4, 5, 6, 7].map((item, index) => (
+              <ParagraphSkeleton key={index} />
+            ))}
+          </div>
         ) : sources.length !== 0 ? (
           sources.map((article, index) => (
             <Button
