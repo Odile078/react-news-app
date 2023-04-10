@@ -1,4 +1,3 @@
-import { useSelector } from "react-redux";
 import GeneralArticles from "../sections/GeneralArticles";
 import { useParams } from "react-router-dom";
 

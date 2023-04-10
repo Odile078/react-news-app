@@ -1,8 +1,6 @@
 import { useEffect } from "react";
 import { useDispatch, useSelector } from "react-redux";
 import { fetchTrendingArticles } from "../../features/trendingArticlesSlice";
-import ArticleSkeleton from "../skeletonLoaders/ArticleSkeleton";
-import Article from "../cards/Article";
 import ArticlesList from "../cards/ArticlesList";
 import { articlesList } from "../../data/articleSample";
 

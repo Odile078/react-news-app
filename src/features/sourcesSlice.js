@@ -1,8 +1,4 @@
-import {
-  createAsyncThunk,
-  createSlice,
-  isRejectedWithValue,
-} from "@reduxjs/toolkit";
+import { createAsyncThunk, createSlice } from "@reduxjs/toolkit";
 import API_KEY from "../data/api";
 import axios from "axios";
 import { nanoid } from "nanoid";
