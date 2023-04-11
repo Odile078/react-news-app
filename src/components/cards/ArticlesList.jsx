@@ -15,6 +15,7 @@ const ArticlesList = ({ articles, isLoading, listTitle }) => {
       ) : articles?.length !== 0 ? (
         articles.map((article, index) => (
           <Article
+            key={article.id}
             article={article}
             firstArticle={index === 0 ? true : false}
           />

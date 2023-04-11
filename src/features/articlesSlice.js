@@ -6,20 +6,18 @@ import { nanoid } from "nanoid";
 const initialState = {
   isLoading: false,
   articles: [],
+  trendingArticles: [],
   selectedArticle: {},
   errors: null,
 };
-export const fetchArticles = createAsyncThunk(
-  "articles/fetchArticles",
-  async (_, { getState, rejectWithValue }) => {
+export const fetchTrendingArticles = createAsyncThunk(
+  "trendingArticles/fetchTrendingArticles",
+  async (_, { rejectWithValue, getState }) => {
     try {
       const category = getState().categories.selectedCategory || "general";
       const response = await axios.get(
-        `https://newsapi.org/v2/everything?language=en&category=${category}&apiKey=${API_KEY}`
+        `https://news-proxy.netlify.app/api/top-headlines?language=en&category=${category}&apiKey=${API_KEY}`
       );
-      // const response = await axios.get(
-      //   `https://newsapi.org/v2/top-headlines?language=en&category=${category}&apiKey=${API_KEY}`
-      // );
       return response.data;
     } catch (err) {
       return rejectWithValue(err.message);
@@ -27,6 +25,20 @@ export const fetchArticles = createAsyncThunk(
   }
 );
 
+export const fetchArticlesBySource = createAsyncThunk(
+  "trendingArticles/fetchArticlesBySource",
+  async (selectedSource, { rejectWithValue, getState }) => {
+    try {
+      const source = selectedSource || getState().sources.selectedSource.id;
+      const response = await axios.get(
+        `https://newsapi.org/v2/everything?language=en&sources=${source}&apiKey=${API_KEY}`
+      );
+      return response.data;
+    } catch (err) {
+      return rejectWithValue(err.message);
+    }
+  }
+);
 export const searchArticles = createAsyncThunk(
   "articles/searchArticles",
   async (searchUrl, { getState, rejectWithValue }) => {
@@ -43,11 +55,7 @@ export const searchArticlesByKeyword = (searchText) => {
   const searchByKeywordUrl = `https://newsapi.org/v2/everything?language=en&q=${keyword}&apiKey=${API_KEY}`;
   searchArticles(searchByKeywordUrl);
 };
-export const searchArticlesBySource = (selectedSource) => {
-  // const selectedSource = getState().sources.selectedSource;
-  const searchBySourceUrl = `https://newsapi.org/v2/everything?language=en&source=${selectedSource}&apiKey=${API_KEY}`;
-  searchArticles(searchBySourceUrl);
-};
+
 export const searchArticlesBySourceAndKeyword = (
   selectedSource,
   searchText
@@ -67,17 +75,31 @@ const articlesSlice = createSlice({
   },
   extraReducers: (builder) => {
     builder
-      .addCase(fetchArticles.pending, (state) => {
+      .addCase(fetchTrendingArticles.pending, (state) => {
         state.isLoading = true;
       })
-      .addCase(fetchArticles.fulfilled, (state, action) => {
+      .addCase(fetchTrendingArticles.fulfilled, (state, action) => {
+        state.isLoading = false;
+        state.trendingArticles = action.payload.articles
+          ?.slice(0, 10)
+          ?.map((article, index) => (article = { ...article, id: nanoid() }));
+        state.errors = null;
+      })
+      .addCase(fetchTrendingArticles.rejected, (state, action) => {
+        state.isLoading = false;
+        state.errors = action.payload;
+      })
+      .addCase(fetchArticlesBySource.pending, (state) => {
+        state.isLoading = true;
+      })
+      .addCase(fetchArticlesBySource.fulfilled, (state, action) => {
         state.isLoading = false;
         state.articles = action.payload.articles
           ?.slice(0, 10)
-          ?.map((article) => (article = { ...article, id: nanoid() }));
+          ?.map((article, index) => (article = { ...article, id: nanoid() }));
         state.errors = null;
       })
-      .addCase(fetchArticles.rejected, (state, action) => {
+      .addCase(fetchArticlesBySource.rejected, (state, action) => {
         state.isLoading = false;
         state.errors = action.payload;
       })

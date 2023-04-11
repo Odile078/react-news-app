@@ -1,26 +1,25 @@
 import { useEffect } from "react";
 import { useDispatch, useSelector } from "react-redux";
-import { fetchTrendingArticles } from "../../features/trendingArticlesSlice";
 import ArticlesList from "../cards/ArticlesList";
 import { articlesList } from "../../data/articleSample";
+import { fetchTrendingArticles } from "../../features/articlesSlice";
 
 const TrendingArticles = () => {
   const { trendingArticles, isLoading } = useSelector(
-    (state) => state.trendingArticles
+    (state) => state.articles
   );
   const { selectedCategory } = useSelector((state) => state.categories);
-  const newArticles =
-    !isLoading && trendingArticles?.length !== 0
-      ? trendingArticles
-      : articlesList;
+  const getTrendingArticles = () => {
+    dispatch(fetchTrendingArticles());
+  };
   const dispatch = useDispatch();
   useEffect(() => {
-    dispatch(fetchTrendingArticles());
+    getTrendingArticles();
   }, [selectedCategory]);
   return (
     <div className="space-y-4">
       <h1 className="text-4xl font-bold text-slate-700">Trending </h1>
-      <ArticlesList articles={newArticles} isLoading={isLoading} />
+      <ArticlesList articles={trendingArticles} isLoading={isLoading} />
     </div>
   );
 };

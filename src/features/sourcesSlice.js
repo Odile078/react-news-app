@@ -16,7 +16,7 @@ export const fetchSources = createAsyncThunk(
     try {
       const category = getState().categories.selectedCategory || "general";
       const response = await axios.get(
-        `https://newsapi.org/v2/top-headlines?category=${category}&country=us&apiKey=${API_KEY}`
+        `https://newsapi.org/v2/top-headlines/sources?category=${category}&country=us&apiKey=${API_KEY}`
       );
       return response.data;
     } catch (err) {
@@ -39,13 +39,7 @@ const sourcesSlice = createSlice({
       })
       .addCase(fetchSources.fulfilled, (state, action) => {
         state.isLoading = false;
-        state.sources = action.payload?.articles?.map(
-          (article, index) =>
-            (article = {
-              ...article,
-              source: { ...article.source, id: nanoid() },
-            })
-        );
+        state.sources = action.payload.sources;
         state.errors = null;
       })
       .addCase(fetchSources.rejected, (state, action) => {

@@ -35,9 +35,14 @@ const Article = ({ article, firstArticle = false }) => {
             : "h-40 max-h-40"
         }`}
       />
-      <div className="p-4 space-y-4 justify-self-end">
+      <div
+        className={`p-4 space-y-4 justify-self-end ${
+          firstArticle ? "my-10" : ""
+        }`}
+      >
         <h5 className="font-bold text-slate-400">
-          {article.title?.substring(0, 30)}
+          {/* {article.title?.substring(0, 30)} */}
+          {article.title}
         </h5>
         <p className="text-slate-400">{article.description}</p>
         <Button action={() => handleSelectArticle(article)}>More</Button>

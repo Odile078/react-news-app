@@ -7,16 +7,18 @@ import { sourcesList } from "../../data/sourceSample";
 import { useNavigate } from "react-router-dom";
 
 const Sources = () => {
-  const { sources, isLoading, errors } = useSelector((state) => state.sources);
+  const { sources, selectedSource, isLoading, errors } = useSelector(
+    (state) => state.sources
+  );
   const { selectedCategory } = useSelector((state) => state.categories);
   const newSources =
     !isLoading && sources?.length !== 0 ? sources : sourcesList;
   const dispatch = useDispatch();
 
   const navigate = useNavigate();
-  const handleSelectSource = (category) => {
-    dispatch(setSelectedSource(category));
-    navigate(`/sources/${category}`);
+  const handleSelectSource = (source) => {
+    dispatch(setSelectedSource(source));
+    navigate(`/sources/${source.id}`);
   };
   useEffect(() => {
     dispatch(fetchSources());
@@ -34,13 +36,13 @@ const Sources = () => {
             ))}
           </div>
         ) : newSources.length !== 0 ? (
-          newSources.map((article, index) => (
+          newSources.map((source, index) => (
             <Button
-              key={index}
-              active={index === 0 ? true : false}
-              action={() => handleSelectSource(article?.source.name)}
+              key={source.id}
+              active={source === selectedSource ? true : false}
+              action={() => handleSelectSource(source)}
             >
-              {article?.source.name}
+              {source.name}
             </Button>
           ))
         ) : (

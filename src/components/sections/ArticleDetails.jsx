@@ -1,6 +1,7 @@
 import { useSelector } from "react-redux";
 import { Link, useNavigate } from "react-router-dom";
-
+import defaultArticleImg from "../../assets/images/pexels-photo-518543.jpeg";
+import { HiOutlineArrowNarrowLeft } from "react-icons/hi";
 const ArticleDetails = () => {
   const { selectedArticle } = useSelector((state) => state.articles);
   const navigate = useNavigate();
@@ -9,21 +10,21 @@ const ArticleDetails = () => {
     <div className="py-10 space-y-10">
       <button
         onClick={handleNavigateBack}
-        className="text-base text-cyan-700 hover:underline"
+        className="flex items-end gap-1 text-base text-cyan-700 hover:underline"
       >
-        back
+        <HiOutlineArrowNarrowLeft /> <p>back</p>
       </button>
-      <div className="space-y-6 ">
-        <div className="grid grid-cols-1 gap-4 sm:grid-cols-2">
+      <div className="space-y-16">
+        <div className="grid grid-cols-1 gap-4 sm:grid-cols-3">
           <img
-            src={selectedArticle.urlToImage ?? ""}
-            className="object-cover object-center rounded-xl"
+            src={selectedArticle.urlToImage ?? defaultArticleImg}
+            className="object-cover object-center h-full rounded-xl md:col-span-2"
           />
-          <div className="space-y-3 sm:order-first">
+          <div className="py-2 space-y-3 sm:order-first">
             <p className="text-sm text-slate-500">
               {selectedArticle?.publishedAt?.substring(0, 10)}
             </p>
-            <h3 className="font-bold text-slate-700">
+            <h3 className="text-4xl font-bold text-slate-700">
               {selectedArticle.title}
             </h3>
             <div>
