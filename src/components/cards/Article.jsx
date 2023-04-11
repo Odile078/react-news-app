@@ -19,7 +19,7 @@ const Article = ({ article, firstArticle = false, smallSize = false }) => {
   };
   return (
     <div
-      className={`flex w-full bg-slate-50 border border-slate-50 hover:bg-slate-50 hover:shadow-md cursor-pointer gap-2 justify-between ${
+      className={`flex w-full bg-slate-50 border border-slate-50 hover:bg-slate-100 hover:shadow-md cursor-pointer gap-2 justify-between ${
         firstArticle ? "lg:row-span-2 lg:col-span-2 " : ""
       } ${smallSize ? "flex-col" : "flex-col"}`}
     >
