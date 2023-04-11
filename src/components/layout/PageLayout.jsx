@@ -3,6 +3,7 @@ import Categories from "../sections/Categories";
 import Sources from "../sections/Sources";
 import Footer from "./Footer";
 import Header from "./Header";
+import WeeklyStories from "../sections/WeeklyStories";
 
 const PageLayout = () => {
   const { articleId } = useParams();
@@ -16,8 +17,9 @@ const PageLayout = () => {
           <div className="md:col-span-3">
             <Outlet />
           </div>
-          <div className="">
+          <div className="space-y-6">
             <Sources />
+            <WeeklyStories />
           </div>
         </div>
       </main>

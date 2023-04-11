@@ -38,7 +38,7 @@ const Sources = () => {
         ) : newSources.length !== 0 ? (
           newSources.map((source, index) => (
             <Button
-              key={source.id}
+              key={source?.id ?? index}
               active={source === selectedSource ? true : false}
               action={() => handleSelectSource(source)}
             >
