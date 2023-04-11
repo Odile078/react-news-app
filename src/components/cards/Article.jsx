@@ -33,7 +33,7 @@ const Article = ({ article, firstArticle = false, smallSize = false }) => {
           firstArticle
             ? "h-40 lg:h-96  max-h-40 lg:max-h-full"
             : smallSize
-            ? "h-24"
+            ? "h-16"
             : "h-40 max-h-40"
         }`}
       />
@@ -47,13 +47,19 @@ const Article = ({ article, firstArticle = false, smallSize = false }) => {
             smallSize ? "text-sm" : "text-base"
           } font-bold text-slate-400`}
         >
-          {smallSize ? article.title?.substring(0, 20) : article.title}
+          {/* {smallSize ? article.title?.substring(0, 20) : article.title} */}
+          {article.title}
         </h5>
 
         <p className={`text-slate-400 ${smallSize ? "hidden" : ""}`}>
           {article.description}
         </p>
-        <Button action={() => handleSelectArticle(article)}>More</Button>
+        <button
+          onClick={() => handleSelectArticle(article)}
+          className="text-sm font-bold text-cyan-700"
+        >
+          Continue reading
+        </button>
       </div>
     </div>
   );
