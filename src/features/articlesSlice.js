@@ -67,38 +67,30 @@ export const fetchArticlesByWeek = createAsyncThunk(
     }
   }
 );
-export const searchArticles = createAsyncThunk(
-  "articles/searchArticles",
-  async (searchUrl, { getState, rejectWithValue }) => {
+export const searchArticlesByKeyword = createAsyncThunk(
+  "articles/searchArticlesByKeyword",
+  async (searchText, { getState, rejectWithValue }) => {
     try {
-      const response = await axios.get(searchUrl);
+      const keyword = searchText;
+      const response = await axios.get(
+        `https://newsapi.org/v2/everything?language=en&q=${keyword}&apiKey=${API_KEY}`
+      );
       return response.data;
     } catch (err) {
       return rejectWithValue(err.message);
     }
   }
 );
-export const searchArticlesByKeyword = (searchText) => {
-  const keyword = searchText;
-  const searchByKeywordUrl = `https://newsapi.org/v2/everything?language=en&q=${keyword}&apiKey=${API_KEY}`;
-  searchArticles(searchByKeywordUrl);
-};
 
-export const searchArticlesBySourceAndKeyword = (
-  selectedSource,
-  searchText
-) => {
-  // const selectedSource = getState().sources.selectedSource;
-  const keyword = searchText;
-  const searchBySourceUrl = `https://newsapi.org/v2/everything?language=en&source=${selectedSource}&apiKey=${API_KEY}`;
-  searchArticles(searchBySourceUrl);
-};
 const articlesSlice = createSlice({
   name: "articles",
   initialState: initialState,
   reducers: {
     setSelectedArticle: (state, action) => {
       state.selectedArticle = action.payload;
+    },
+    clearArticles: (state, action) => {
+      state.articles = [];
     },
   },
   extraReducers: (builder) => {
@@ -145,21 +137,21 @@ const articlesSlice = createSlice({
         state.isLoading = false;
         state.errors = action.payload;
       })
-      .addCase(searchArticles.pending, (state) => {
+      .addCase(searchArticlesByKeyword.pending, (state) => {
         state.isLoading = true;
       })
-      .addCase(searchArticles.fulfilled, (state, action) => {
+      .addCase(searchArticlesByKeyword.fulfilled, (state, action) => {
         state.isLoading = false;
         state.articles = action.payload.articles
-          ?.slice(0, 10)
+          ?.slice(0, 24)
           ?.map((article, index) => (article = { ...article, id: nanoid() }));
         state.errors = null;
       })
-      .addCase(searchArticles.rejected, (state, action) => {
+      .addCase(searchArticlesByKeyword.rejected, (state, action) => {
         state.isLoading = false;
         state.errors = action.payload;
       });
   },
 });
-export const { setSelectedArticle } = articlesSlice.actions;
+export const { setSelectedArticle, clearArticles } = articlesSlice.actions;
 export default articlesSlice.reducer;
