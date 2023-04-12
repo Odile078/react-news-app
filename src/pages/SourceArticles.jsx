@@ -3,6 +3,7 @@ import { useParams } from "react-router-dom";
 import { fetchArticlesBySource } from "../features/articlesSlice";
 import ArticlesList from "../components/cards/ArticlesList";
 import { useEffect } from "react";
+import { scrollToTop } from "../helpers/ScrollToTop";
 
 const SourceArticles = () => {
   const { sourceName } = useParams();
@@ -10,10 +11,13 @@ const SourceArticles = () => {
   const { articles, isLoading } = useSelector((state) => state.articles);
 
   const dispatch = useDispatch();
-
+  useEffect(() => {
+    scrollToTop();
+  }, []);
   useEffect(() => {
     dispatch(fetchArticlesBySource(selectedSource?.id || sourceName));
   }, [selectedSource?.id]);
+
   return (
     <div className="space-y-4">
       <h1 className="text-4xl font-bold text-slate-700">
