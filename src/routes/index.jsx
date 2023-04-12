@@ -4,7 +4,7 @@ import Home from "../pages/Home";
 import ArticleDetails from "../components/sections/ArticleDetails";
 import NotFound from "../pages/NotFound";
 import SourceArticles from "../pages/SourceArticles";
-
+import SearchArticles from "../pages/SearchArticles";
 const index = () => {
   let routes = useRoutes([
     {
@@ -33,36 +33,10 @@ const index = () => {
         },
       ],
     },
+    { name: "Search page", path: "/search", element: <SearchArticles /> },
     { name: "404 page", path: "*", element: <NotFound /> },
   ]);
   return <>{routes}</>;
 };
 
 export default index;
-{
-  /* <Routes>
-        <Route path="/" element={<PageLayout />}>
-          <Route index element={<Home />} exact />
-          <Route
-            name="Article contents"
-            path="/news/:articleId"
-            exact
-            element={<ArticleDetails />}
-          />
-          <Route
-            name="Source articles"
-            path="/:sourceName"
-            exact
-            element={<GeneralArticles />}
-          />
-          <Route
-            name="Source Article contents"
-            path="/:sourceName/:articleId"
-            exact
-            element={<ArticleDetails />}
-          />
-          <Route name="404 page" path="*" element={<NotFound />} />
-        </Route>
-        <Route name="404 page" path="*" element={<NotFound />} />
-      </Routes> */
-}
