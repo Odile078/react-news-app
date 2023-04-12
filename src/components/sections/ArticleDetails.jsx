@@ -2,14 +2,14 @@ import { useSelector } from "react-redux";
 import { Link, useNavigate } from "react-router-dom";
 import defaultArticleImg from "../../assets/images/pexels-photo-518543.jpeg";
 import { HiOutlineArrowNarrowLeft } from "react-icons/hi";
-import { scrollToTop } from "../../helpers/ScrollToTop";
 import { useEffect } from "react";
 const ArticleDetails = () => {
   const { selectedArticle } = useSelector((state) => state.articles);
   const navigate = useNavigate();
   const handleNavigateBack = () => navigate(-1);
+
   useEffect(() => {
-    scrollToTop();
+    window.scrollTo({ top: 0, left: 0, behavior: "smooth" });
   }, []);
   return (
     <div className="py-10 space-y-10">

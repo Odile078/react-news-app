@@ -3,7 +3,6 @@ import { useParams } from "react-router-dom";
 import { fetchArticlesBySource } from "../features/articlesSlice";
 import ArticlesList from "../components/cards/ArticlesList";
 import { useEffect } from "react";
-import { scrollToTop } from "../helpers/ScrollToTop";
 
 const SourceArticles = () => {
   const { sourceName } = useParams();
@@ -12,7 +11,7 @@ const SourceArticles = () => {
 
   const dispatch = useDispatch();
   useEffect(() => {
-    scrollToTop();
+    window.scrollTo({ top: 0, left: 0, behavior: "smooth" });
   }, []);
   useEffect(() => {
     dispatch(fetchArticlesBySource(selectedSource?.id || sourceName));
