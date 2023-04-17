@@ -4,7 +4,6 @@ import API_KEY from "../data/api";
 import { nanoid } from "nanoid";
 import { format, startOfWeek } from "date-fns";
 
-// const API_KEY = import.meta.env.VITE_API_KEY;
 const initialState = {
   isLoading: false,
   articles: [],

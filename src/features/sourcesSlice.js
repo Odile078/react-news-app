@@ -2,7 +2,6 @@ import { createAsyncThunk, createSlice } from "@reduxjs/toolkit";
 import API_KEY from "../data/api";
 import axios from "axios";
 
-// const API_KEY = import.meta.env.VITE_API_KEY;
 const initialState = {
   isLoading: false,
   sources: [],
@@ -10,7 +9,6 @@ const initialState = {
   errors: null,
 };
 
-// const API_KEY = process.env.REACT_APP_API_KEY;
 export const fetchSources = createAsyncThunk(
   "sources/fetchSources",
   async (_, { getState, rejectWithValue }) => {
