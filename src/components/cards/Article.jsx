@@ -1,7 +1,7 @@
 import { useNavigate, useParams } from "react-router-dom";
-import Button from "../ui/Button";
 import { useDispatch } from "react-redux";
 import { setSelectedArticle } from "../../features/articlesSlice";
+import { format } from "date-fns";
 
 const Article = ({ article, firstArticle = false, smallSize = false }) => {
   const { sourceName } = useParams();
@@ -42,14 +42,18 @@ const Article = ({ article, firstArticle = false, smallSize = false }) => {
           firstArticle ? "my-10" : ""
         }`}
       >
-        <h5
-          className={`${
-            smallSize ? "text-sm" : "text-base"
-          } font-bold text-slate-400`}
-        >
-          {/* {smallSize ? article.title?.substring(0, 20) : article.title} */}
-          {article.title}
-        </h5>
+        <div>
+          <h5
+            className={`${
+              smallSize ? "text-sm" : "text-base"
+            } font-bold text-slate-400`}
+          >
+            {article.title}
+          </h5>
+          <p className="pb-2 text-sm text-slate-400">
+            {article?.publishedAt?.substring(0, 10)}
+          </p>
+        </div>
 
         <p className={`text-slate-400 ${smallSize ? "hidden" : ""}`}>
           {article.description}
