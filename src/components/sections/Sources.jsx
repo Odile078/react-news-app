@@ -28,7 +28,7 @@ const Sources = () => {
       <h1 className="text-2xl font-bold text-slate-700">
         Available Publishers
       </h1>
-      <div className="flex flex-wrap gap-4 ">
+      <div className="flex flex-wrap gap-4 overflow-y-auto max-h-60 no-scrollbar">
         {isLoading ? (
           <div className="flex flex-wrap gap-2">
             {[1, 2, 3, 4, 5, 6, 7].map((item, index) => (
