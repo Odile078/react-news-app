@@ -1,8 +1,8 @@
 import { createAsyncThunk, createSlice } from "@reduxjs/toolkit";
-// import API_KEY from "../data/api";
+import API_KEY from "../data/api";
 import axios from "axios";
 
-const API_KEY = import.meta.env.VITE_API_KEY;
+// const API_KEY = import.meta.env.VITE_API_KEY;
 const initialState = {
   isLoading: false,
   sources: [],
