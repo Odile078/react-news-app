@@ -17,7 +17,7 @@ export const fetchSources = createAsyncThunk(
     try {
       const category = getState().categories.selectedCategory || "general";
       const response = await axios.get(
-        `https://newsapi.org/v2/top-headlines/sources?category=${category}&country=us&apiKey=${API_KEY}`
+        `https://news-proxy.netlify.app/api/top-headlines/sources?category=${category}&country=us&apiKey=${API_KEY}`
       );
       return response.data;
     } catch (err) {

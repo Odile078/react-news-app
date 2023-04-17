@@ -34,7 +34,7 @@ export const fetchArticlesBySource = createAsyncThunk(
     try {
       const source = selectedSource || getState().sources.selectedSource.id;
       const response = await axios.get(
-        `https://newsapi.org/v2/everything?language=en&sources=${source}&apiKey=${API_KEY}`
+        `https://news-proxy.netlify.app/api/everything?language=en&sources=${source}&apiKey=${API_KEY}`
       );
       return response.data;
     } catch (err) {
@@ -52,7 +52,7 @@ export const fetchArticlesByWeek = createAsyncThunk(
       const weekEnd = format(new Date(), "yyyy-MM-dd");
 
       const response = await axios.get(
-        `https://newsapi.org/v2/everything?language=en&${
+        `https://news-proxy.netlify.app/api/everything?language=en&${
           source ? `sources=${source}` : "q=a"
         }&from=${weekStart}&to=${weekEnd}&sortBy=popularity&apiKey=${API_KEY}`
       );
@@ -68,7 +68,7 @@ export const searchArticlesByKeyword = createAsyncThunk(
     try {
       const keyword = searchText;
       const response = await axios.get(
-        `https://newsapi.org/v2/everything?language=en&q=${keyword}&apiKey=${API_KEY}`
+        `https://news-proxy.netlify.app/api/everything?language=en&q=${keyword}&apiKey=${API_KEY}`
       );
       return response.data;
     } catch (err) {
