@@ -1,6 +1,5 @@
 import { createAsyncThunk, createSlice } from "@reduxjs/toolkit";
 import axios from "axios";
-// import API_KEY from "../data/api";
 import { nanoid } from "nanoid";
 import { format, startOfWeek } from "date-fns";
 
