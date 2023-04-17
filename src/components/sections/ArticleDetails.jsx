@@ -15,7 +15,7 @@ const ArticleDetails = () => {
     <div className="py-10 space-y-10">
       <button
         onClick={handleNavigateBack}
-        className="flex items-end gap-1 text-base text-cyan-700 hover:underline"
+        className="flex items-center gap-1 text-lg text-cyan-700 hover:underline"
       >
         <HiOutlineArrowNarrowLeft /> <p>back</p>
       </button>
