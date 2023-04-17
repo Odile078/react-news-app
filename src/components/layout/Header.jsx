@@ -11,7 +11,7 @@ const Header = () => {
     navigate("/search");
   };
   return (
-    <header className="flex flex-wrap items-center justify-between w-full max-w-6xl gap-4 px-5 py-4 bg-slate-200 lg:mx-auto">
+    <header className="flex flex-wrap items-center justify-between w-full max-w-7xl gap-4 px-5 py-4 bg-slate-200 lg:mx-auto">
       <Link to="/" className="flex items-end gap-2">
         <h1 className="text-3xl logo-font">News</h1>
         <TbSpeakerphone className="text-4xl" />

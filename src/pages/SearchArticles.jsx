@@ -25,7 +25,7 @@ const SearchArticles = () => {
   return (
     <div className="flex flex-col min-h-screen">
       <Header />
-      <main className="flex-1 max-w-6xl px-5 pb-10 space-y-10 lg:min-w-[1024px] lg:mx-auto py-10">
+      <main className="flex-1 max-w-7xl px-5 pb-10 space-y-10 lg:min-w-[1024px] lg:mx-auto py-10">
         <div className="flex justify-center">
           <form
             className="flex p-1 px-5 bg-white border rounded-3xl border-slate-500 w-5/6"
