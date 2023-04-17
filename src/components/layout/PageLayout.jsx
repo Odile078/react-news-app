@@ -10,7 +10,7 @@ const PageLayout = () => {
   return (
     <div className="flex flex-col min-h-screen">
       <Header />
-      <main className="flex-1 px-5 pb-10 space-y-10 max-w-7xl lg:mx-auto">
+      <main className="flex-1 max-w-6xl px-5 pb-10 space-y-10 lg:mx-auto">
         {!articleId && <Categories />}
 
         <div className="grid grid-cols-1 gap-12 md:grid-cols-4">

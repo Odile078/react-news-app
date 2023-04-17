@@ -11,14 +11,16 @@ const Header = () => {
     navigate("/search");
   };
   return (
-    <header className="flex flex-wrap items-center justify-between w-full max-w-7xl gap-4 px-5 py-4 bg-slate-200 lg:mx-auto">
-      <Link to="/" className="flex items-end gap-2">
-        <h1 className="text-3xl logo-font">News</h1>
-        <TbSpeakerphone className="text-4xl" />
-      </Link>
-      <button onClick={handleClickSearch}>
-        <IoIosSearch className="text-slate-800 text-2xl" />
-      </button>
+    <header className="flex w-full max-w-7xl lg:mx-auto bg-slate-200">
+      <div className="flex flex-wrap items-center justify-between w-full max-w-6xl gap-4 px-5 py-4 bg-slate-200 lg:mx-auto">
+        <Link to="/" className="flex items-end gap-2">
+          <h1 className="text-3xl logo-font">News</h1>
+          <TbSpeakerphone className="text-4xl" />
+        </Link>
+        <button onClick={handleClickSearch}>
+          <IoIosSearch className="text-2xl text-slate-800" />
+        </button>
+      </div>
     </header>
   );
 };
