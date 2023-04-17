@@ -12,6 +12,7 @@ const initialState = {
   weeklyArticles: [],
   selectedArticle: {},
   errors: null,
+  isSearching: false,
 };
 export const fetchTrendingArticles = createAsyncThunk(
   "articles/fetchTrendingArticles",
@@ -87,6 +88,9 @@ const articlesSlice = createSlice({
     clearArticles: (state, action) => {
       state.articles = [];
     },
+    setIsSearching: (state, action) => {
+      state.isSearching = action.payload;
+    },
   },
   extraReducers: (builder) => {
     builder
@@ -134,6 +138,7 @@ const articlesSlice = createSlice({
       })
       .addCase(searchArticlesByKeyword.pending, (state) => {
         state.isLoading = true;
+        state.isSearching = true;
       })
       .addCase(searchArticlesByKeyword.fulfilled, (state, action) => {
         state.isLoading = false;
@@ -148,5 +153,6 @@ const articlesSlice = createSlice({
       });
   },
 });
-export const { setSelectedArticle, clearArticles } = articlesSlice.actions;
+export const { setSelectedArticle, clearArticles, setIsSearching } =
+  articlesSlice.actions;
 export default articlesSlice.reducer;

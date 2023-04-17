@@ -1,7 +1,9 @@
+import { useSelector } from "react-redux";
 import ArticleSkeleton from "../skeletonLoaders/ArticleSkeleton";
 import Article from "./Article";
 
-const ArticlesList = ({ articles, isLoading, listTitle }) => {
+const ArticlesList = ({ articles, isLoading }) => {
+  const { isSearching } = useSelector((state) => state.articles);
   return (
     <div className="grid grid-cols-1 gap-3 sm:grid-cols-2 lg:grid-cols-3">
       {isLoading ? (
@@ -21,7 +23,11 @@ const ArticlesList = ({ articles, isLoading, listTitle }) => {
           />
         ))
       ) : (
-        <p className="text-slate-400">No articles found</p>
+        <p className="text-slate-400">
+          {isSearching
+            ? "No articles found, try a different keyword."
+            : "No articles found."}
+        </p>
       )}
     </div>
   );
