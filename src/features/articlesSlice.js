@@ -100,7 +100,7 @@ const articlesSlice = createSlice({
       .addCase(fetchTrendingArticles.fulfilled, (state, action) => {
         state.isLoading = false;
         state.trendingArticles = action.payload.articles
-          ?.slice(0, 10)
+          ?.slice(0, 12)
           ?.map((article, index) => (article = { ...article, id: nanoid() }));
         state.errors = null;
       })
