@@ -28,7 +28,7 @@ const WeeklyStories = () => {
             />
           ))
         ) : weeklyArticles?.length !== 0 ? (
-          weeklyArticles.map((article, index) => (
+          weeklyArticles.map((article) => (
             <Article
               key={article.id}
               article={article}
