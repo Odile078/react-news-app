@@ -67,9 +67,8 @@ export const searchArticlesByKeyword = createAsyncThunk(
   "articles/searchArticlesByKeyword",
   async (searchText, { getState, rejectWithValue }) => {
     try {
-      const keyword = searchText;
       const response = await axios.get(
-        `https://news-proxy.netlify.app/api/everything?language=en&q=${keyword}&apiKey=${API_KEY}`
+        `https://news-proxy.netlify.app/api/everything?language=en&q=${searchText}&apiKey=${API_KEY}`
       );
       return response.data;
     } catch (err) {
