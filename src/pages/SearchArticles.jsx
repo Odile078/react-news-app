@@ -16,9 +16,9 @@ const SearchArticles = () => {
   );
   const [searchText, setSearchText] = useState("");
   const dispatch = useDispatch();
-  const handleChangeSearchText = (e) => setSearchText(e.target.value);
-  const handleSubmitForm = (e) => {
-    e.preventDefault();
+  const handleChangeSearchText = (event) => setSearchText(event.target.value);
+  const handleSubmitForm = (event) => {
+    event.preventDefault();
     if (!searchText?.trim()) return;
     dispatch(searchArticlesByKeyword(searchText));
   };
