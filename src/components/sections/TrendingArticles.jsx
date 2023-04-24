@@ -1,7 +1,6 @@
 import { useEffect } from "react";
 import { useDispatch, useSelector } from "react-redux";
 import ArticlesList from "../cards/ArticlesList";
-import { articlesList } from "../../data/articleSample";
 import { fetchTrendingArticles } from "../../features/articlesSlice";
 
 const TrendingArticles = () => {

@@ -3,7 +3,6 @@ import Button from "../ui/Button";
 import { useDispatch, useSelector } from "react-redux";
 import { fetchSources, setSelectedSource } from "../../features/sourcesSlice";
 import ParagraphSkeleton from "../skeletonLoaders/ParagraphSkeleton";
-import { sourcesList } from "../../data/sourceSample";
 import { useNavigate } from "react-router-dom";
 
 const Sources = () => {
@@ -11,8 +10,6 @@ const Sources = () => {
     (state) => state.sources
   );
   const { selectedCategory } = useSelector((state) => state.categories);
-  const newSources =
-    !isLoading && sources?.length !== 0 ? sources : sourcesList;
   const dispatch = useDispatch();
 
   const navigate = useNavigate();
@@ -35,8 +32,8 @@ const Sources = () => {
               <ParagraphSkeleton key={index} />
             ))}
           </div>
-        ) : newSources.length !== 0 ? (
-          newSources.map((source, index) => (
+        ) : sources.length !== 0 ? (
+          sources.map((source, index) => (
             <Button
               key={source?.id ?? index}
               active={source === selectedSource ? true : false}
