@@ -127,7 +127,7 @@ const articlesSlice = createSlice({
       .addCase(fetchArticlesByWeek.fulfilled, (state, action) => {
         state.isLoading = false;
         state.weeklyArticles = action.payload.articles
-          ?.slice(0, 6)
+          ?.slice(0, 4)
           ?.map((article, index) => (article = { ...article, id: nanoid() }));
         state.errors = null;
       })
