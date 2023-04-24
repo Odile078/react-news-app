@@ -10,7 +10,6 @@ const WeeklyStories = () => {
 
   const dispatch = useDispatch();
   const getWeeklyArticles = () => {
-    console.log("getWeeklyArticles------------------------");
     dispatch(fetchArticlesByWeek());
   };
   useEffect(() => {
@@ -19,7 +18,7 @@ const WeeklyStories = () => {
   return (
     <div className="space-y-4">
       <h1 className="text-2xl font-bold text-slate-700">Weekly Stories </h1>
-      <div className="grid grid-cols-1 gap-3 sm:grid-cols-2- ">
+      <div className="grid grid-cols-1 gap-3">
         {isLoading ? (
           [1, 2, 3, 4, 5].map((item, index) => (
             <ArticleSkeleton
